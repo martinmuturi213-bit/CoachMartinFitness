@@ -1,0 +1,1561 @@
+ ```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Coach Martin Fitness</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080808;
+            color: white;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.95);
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffd000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd000;
+        }
+
+
+        /* HERO */
+
+        .hero {
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 120px 7% 70px;
+
+            background:
+            linear-gradient(
+                rgba(0,0,0,0.65),
+                rgba(0,0,0,0.9)
+            ),
+            url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ffd000;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 28px;
+            background: #ffd000;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .button:hover {
+            background: white;
+        }
+
+        .outline {
+            background: transparent;
+            border: 2px solid #ffd000;
+            color: white;
+        }
+
+
+        /* GENERAL */
+
+        section {
+            padding: 90px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+        }
+
+        .section-title span {
+            color: #ffd000;
+        }
+
+        .section-title p {
+            color: #999;
+            margin-top: 10px;
+        }
+
+
+        /* ABOUT */
+
+        .about {
+            background: #151515;
+        }
+
+        .about-container {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+
+            align-items: center;
+        }
+
+        .about-image img {
+
+            width: 100%;
+
+            border-radius: 12px;
+        }
+
+        .about-text h3 {
+
+            font-size: 32px;
+
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+
+            color: #bbb;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* SERVICES */
+
+        .services {
+
+            background: #080808;
+        }
+
+        .services-grid {
+
+            display: grid;
+
+            grid-template-columns:
+            repeat(3,1fr);
+
+            gap: 22px;
+        }
+
+        .service {
+
+            background: #171717;
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            transition: 0.3s;
+
+            border-bottom:
+            3px solid #ffd000;
+        }
+
+        .service:hover {
+
+            transform:
+            translateY(-8px);
+        }
+
+        .service-icon {
+
+            font-size: 45px;
+
+            margin-bottom: 15px;
+        }
+
+        .service h3 {
+
+            color: #ffd000;
+
+            margin-bottom: 10px;
+        }
+
+        .service p {
+
+            color: #aaa;
+        }
+
+
+        /* PRICES */
+
+        .prices {
+
+            background: #151515;
+        }
+
+        .price-grid {
+
+            display: grid;
+
+            grid-template-columns:
+            repeat(3,1fr);
+
+            gap: 25px;
+        }
+
+        .price-card {
+
+            background: #080808;
+
+            padding: 35px;
+
+            text-align: center;
+
+            border-radius: 10px;
+        }
+
+        .price-card.featured {
+
+            border:
+            2px solid #ffd000;
+
+            transform:
+            scale(1.04);
+        }
+
+        .price-card h3 {
+
+            font-size: 24px;
+
+            margin-bottom: 15px;
+        }
+
+        .amount {
+
+            font-size: 38px;
+
+            color: #ffd000;
+
+            font-weight: bold;
+
+            margin: 20px 0;
+        }
+
+        .price-card p {
+
+            color: #aaa;
+
+            margin-bottom: 12px;
+        }
+
+
+        /* REGISTRATION */
+
+        .registration {
+
+            background: #080808;
+        }
+
+        .registration-container {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            background: #151515;
+
+            padding: 35px;
+
+            border-radius: 12px;
+        }
+
+        .registration-container h3 {
+
+            text-align: center;
+
+            color: #ffd000;
+
+            font-size: 28px;
+
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+            1fr 1fr;
+
+            gap: 15px;
+        }
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 15px;
+
+            background: #222;
+
+            border: 1px solid #444;
+
+            color: white;
+
+            border-radius: 5px;
+
+            margin-bottom: 15px;
+        }
+
+        textarea {
+
+            height: 120px;
+
+            resize: none;
+        }
+
+        .full {
+
+            grid-column:
+            1 / -1;
+        }
+
+        .submit {
+
+            width: 100%;
+
+            padding: 16px;
+
+            background: #ffd000;
+
+            border: none;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            border-radius: 5px;
+        }
+
+        .submit:hover {
+
+            background: white;
+        }
+
+
+        /* PAYMENT */
+
+        .payment {
+
+            background: #151515;
+
+            text-align: center;
+        }
+
+        .payment-box {
+
+            max-width: 700px;
+
+            margin: auto;
+
+            background: #080808;
+
+            padding: 40px;
+
+            border-radius: 12px;
+
+            border:
+            2px solid #ffd000;
+        }
+
+        .mpesa {
+
+            font-size: 50px;
+
+            margin-bottom: 15px;
+        }
+
+        .payment-box h3 {
+
+            font-size: 30px;
+
+            color: #ffd000;
+
+            margin-bottom: 15px;
+        }
+
+        .payment-box p {
+
+            color: #ccc;
+
+            margin-bottom: 12px;
+        }
+
+        .payment-number {
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            margin: 20px 0;
+
+            color: white;
+        }
+
+
+        /* SOCIAL */
+
+        .social {
+
+            text-align: center;
+
+            background: #080808;
+        }
+
+        .instagram {
+
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 15px 30px;
+
+            background:
+            linear-gradient(
+                45deg,
+                #f9ce34,
+                #ee2a7b,
+                #6228d7
+            );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            border-radius: 7px;
+        }
+
+
+        /* CONTACT */
+
+        .contact {
+
+            background: #151515;
+        }
+
+        .contact-container {
+
+            max-width: 900px;
+
+            margin: auto;
+
+            text-align: center;
+        }
+
+        .contact-container h3 {
+
+            font-size: 32px;
+
+            margin-bottom: 20px;
+        }
+
+        .contact-container p {
+
+            color: #bbb;
+
+            margin: 10px;
+        }
+
+        .contact-container strong {
+
+            color: #ffd000;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+
+            background: black;
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #888;
+        }
+
+        footer span {
+
+            color: #ffd000;
+        }
+
+
+        /* WHATSAPP */
+
+        .whatsapp {
+
+            position: fixed;
+
+            right: 20px;
+
+            bottom: 20px;
+
+            width: 60px;
+
+            height: 60px;
+
+            background: #25D366;
+
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-decoration: none;
+
+            font-size: 28px;
+
+            z-index: 999;
+        }
+
+
+        /* MOBILE */
+
+        @media(max-width:850px) {
+
+            header {
+
+                flex-direction: column;
+
+                gap: 12px;
+            }
+
+            nav a {
+
+                margin-left: 8px;
+
+                font-size: 13px;
+            }
+
+            .hero h1 {
+
+                font-size: 45px;
+            }
+
+            .about-container {
+
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .price-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .price-card.featured {
+
+                transform: none;
+            }
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+
+                grid-column:
+                auto;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<header>
+
+    <div class="logo">
+
+        COACH <span>MARTIN</span> FITNESS
+
+    </div>
+
+    <nav>
+
+        <a href="#home">Home</a>
+
+        <a href="#about">About</a>
+
+        <a href="#services">Services</a>
+
+        <a href="#prices">Prices</a>
+
+        <a href="#register">Register</a>
+
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+
+            BUILD YOUR
+
+            <span>BEST</span>
+
+            VERSION.
+
+        </h1>
+
+        <p>
+
+            Professional personal training,
+            swimming lessons, weight loss,
+            muscle building, body toning,
+            HIIT, spin and aquarobics.
+
+        </p>
+
+        <a
+        href="#register"
+        class="button">
+
+            JOIN COACH MARTIN FITNESS
+
+        </a>
+
+        <a
+        href="https://wa.me/254706920328"
+        target="_blank"
+        class="button outline">
+
+            WHATSAPP ME
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <div class="section-title">
+
+        <h2>
+
+            ABOUT
+
+            <span>COACH MARTIN</span>
+
+        </h2>
+
+        <p>
+
+            Your goal. Your journey. Your transformation.
+
+        </p>
+
+    </div>
+
+
+    <div class="about-container">
+
+        <div class="about-image">
+
+            <img
+            src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61"
+            alt="Coach Martin Fitness">
+
+        </div>
+
+
+        <div class="about-text">
+
+            <h3>
+
+                TRAIN SMART. STAY CONSISTENT.
+
+            </h3>
+
+            <p>
+
+                Coach Martin Fitness is a fitness coaching
+                platform focused on helping people become
+                stronger, healthier and more confident.
+
+            </p>
+
+            <p>
+
+                Training can be customized according to
+                your goals, fitness level and lifestyle.
+
+            </p>
+
+            <p>
+
+                Whether you want to lose weight, gain
+                muscle, tone your body, improve your
+                conditioning or learn how to swim,
+                Coach Martin Fitness is here to help.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+    <div class="section-title">
+
+        <h2>
+
+            MY
+
+            <span>SERVICES</span>
+
+        </h2>
+
+        <p>
+
+            Choose the program that matches your goal.
+
+        </p>
+
+    </div>
+
+
+    <div class="services-grid">
+
+
+        <div class="service">
+
+            <div class="service-icon">💪</div>
+
+            <h3>Personal Training</h3>
+
+            <p>
+
+                Personalized one-on-one training
+                for your fitness goals.
+
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">🔥</div>
+
+            <h3>Weight Loss</h3>
+
+            <p>
+
+                Structured training designed to
+                support healthy weight management.
+
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">🏋️</div>
+
+            <h3>Muscle Building</h3>
+
+            <p>
+
+                Build strength and develop lean muscle.
+
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">⚡</div>
+
+            <h3>Body Toning</h3>
+
+            <p>
+
+                Improve strength, conditioning
+                and muscle definition.
+
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">🏊</div>
+
+            <h3>Swimming Lessons</h3>
+
+            <p>
+
+                Improve swimming skills,
+                confidence and technique.
+
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">🌊</div>
+
+            <h3>Aquarobics</h3>
+
+            <p>
+
+                Effective water-based workouts
+                for full-body conditioning.
+
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">🚴</div>
+
+            <h3>Spin Classes</h3>
+
+            <p>
+
+                High-energy cycling workouts
+                for endurance and fitness.
+
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">⚡</div>
+
+            <h3>HIIT</h3>
+
+            <p>
+
+                High-intensity training designed
+                to challenge your body.
+
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">🔥</div>
+
+            <h3>Core Training</h3>
+
+            <p>
+
+                Build core strength, stability
+                and control.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRICES -->
+
+<section class="prices" id="prices">
+
+    <div class="section-title">
+
+        <h2>
+
+            TRAINING
+
+            <span>PRICES</span>
+
+        </h2>
+
+        <p>
+
+            Simple and transparent pricing.
+
+        </p>
+
+    </div>
+
+
+    <div class="price-grid">
+
+
+        <div class="price-card">
+
+            <h3>PERSONAL TRAINING</h3>
+
+            <div class="amount">
+
+                KSh 3,000+
+
+            </div>
+
+            <p>
+
+                Monthly coaching
+
+            </p>
+
+            <p>
+
+                Personalized workouts
+
+            </p>
+
+            <p>
+
+                Goal-focused training
+
+            </p>
+
+            <a
+            href="#register"
+            class="button">
+
+                CHOOSE PLAN
+
+            </a>
+
+        </div>
+
+
+        <div class="price-card featured">
+
+            <h3>PREMIUM TRAINING</h3>
+
+            <div class="amount">
+
+                KSh 10,000
+
+            </div>
+
+            <p>
+
+                Monthly personal training
+
+            </p>
+
+            <p>
+
+                Personalized support
+
+            </p>
+
+            <p>
+
+                Progress tracking
+
+            </p>
+
+            <a
+            href="#register"
+            class="button">
+
+                CHOOSE PLAN
+
+            </a>
+
+        </div>
+
+
+        <div class="price-card">
+
+            <h3>SWIMMING</h3>
+
+            <div class="amount">
+
+                KSh 800
+
+            </div>
+
+            <p>
+
+                Per session
+
+            </p>
+
+            <p>
+
+                10 sessions per month
+
+            </p>
+
+            <p>
+
+                Swimming instruction
+
+            </p>
+
+            <a
+            href="#register"
+            class="button">
+
+                BOOK SWIMMING
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <p style="text-align:center;color:#aaa;">
+
+        Personal training packages range from
+        <strong style="color:#ffd000;">
+        KSh 3,000 to KSh 10,000 per month.
+        </strong>
+
+    </p>
+
+</section>
+
+
+<!-- REGISTRATION -->
+
+<section class="registration" id="register">
+
+    <div class="section-title">
+
+        <h2>
+
+            JOIN
+
+            <span>COACH MARTIN FITNESS</span>
+
+        </h2>
+
+        <p>
+
+            Fill in your details and send your registration.
+
+        </p>
+
+    </div>
+
+
+    <div class="registration-container">
+
+        <h3>
+
+            CLIENT REGISTRATION FORM
+
+        </h3>
+
+
+        <form
+        onsubmit="registerClient(); return false;">
+
+
+            <div class="form-grid">
+
+
+                <input
+                type="text"
+                id="clientName"
+                placeholder="Full Name"
+                required>
+
+
+                <input
+                type="tel"
+                id="clientPhone"
+                placeholder="Phone Number"
+                required>
+
+
+                <input
+                type="email"
+                id="clientEmail"
+                placeholder="Email Address"
+                required>
+
+
+                <select
+                id="service"
+                required>
+
+                    <option value="">
+                        Select Service
+                    </option>
+
+                    <option>
+                        Personal Training
+                    </option>
+
+                    <option>
+                        Weight Loss
+                    </option>
+
+                    <option>
+                        Muscle Building
+                    </option>
+
+                    <option>
+                        Body Toning
+                    </option>
+
+                    <option>
+                        Swimming Lessons
+                    </option>
+
+                    <option>
+                        Aquarobics
+                    </option>
+
+                    <option>
+                        Spin Classes
+                    </option>
+
+                    <option>
+                        HIIT Training
+                    </option>
+
+                    <option>
+                        Core Training
+                    </option>
+
+                </select>
+
+
+                <select
+                id="plan"
+                required>
+
+                    <option value="">
+                        Select Package
+                    </option>
+
+                    <option>
+                        Personal Training - KSh 3,000
+                    </option>
+
+                    <option>
+                        Personal Training - KSh 5,000
+                    </option>
+
+                    <option>
+                        Personal Training - KSh 7,500
+                    </option>
+
+                    <option>
+                        Personal Training - KSh 10,000
+                    </option>
+
+                    <option>
+                        Swimming - 10 Sessions
+                    </option>
+
+                    <option>
+                        Swimming - Single Session KSh 800
+                    </option>
+
+                </select>
+
+
+                <textarea
+                class="full"
+                id="goal"
+                placeholder="Tell Coach Martin about your fitness goal..."
+                required></textarea>
+
+
+            </div>
+
+
+            <button
+            class="submit"
+            type="submit">
+
+                REGISTER & SEND DETAILS
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- PAYMENT -->
+
+<section class="payment">
+
+    <div class="payment-box">
+
+        <div class="mpesa">
+
+            📱
+
+        </div>
+
+        <h3>
+
+            PAY YOUR SUBSCRIPTION
+
+        </h3>
+
+        <p>
+
+            M-PESA payment number:
+
+        </p>
+
+        <div class="payment-number">
+
+            0706920328
+
+        </div>
+
+        <p>
+
+            After making payment, keep your
+            M-PESA confirmation message.
+
+        </p>
+
+        <p>
+
+            Then send your payment confirmation
+            to Coach Martin through WhatsApp.
+
+        </p>
+
+
+        <a
+        href="https://wa.me/254706920328?text=Hello%20Coach%20Martin,%20I%20have%20made%20my%20subscription%20payment.%20Here%20is%20my%20payment%20confirmation."
+        target="_blank"
+        class="button">
+
+            SEND PAYMENT CONFIRMATION
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- INSTAGRAM -->
+
+<section class="social">
+
+    <div class="section-title">
+
+        <h2>
+
+            FOLLOW
+
+            <span>COACH MARTIN</span>
+
+        </h2>
+
+        <p>
+
+            Follow my fitness journey and training content.
+
+        </p>
+
+    </div>
+
+
+    <a
+    href="https://www.instagram.com/iceg_raffer/"
+    target="_blank"
+    class="instagram">
+
+        📸 FOLLOW @iceg_raffer ON INSTAGRAM
+
+    </a>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <div class="contact-container">
+
+        <h3>
+
+            READY TO START?
+
+        </h3>
+
+        <p>
+
+            📞 <strong>Phone:</strong>
+            0706920328
+
+        </p>
+
+        <p>
+
+            📧 <strong>Email:</strong>
+            martinmuturi213@gmail.com
+
+        </p>
+
+        <p>
+
+            📸 <strong>Instagram:</strong>
+            @iceg_raffer
+
+        </p>
+
+        <br>
+
+        <a
+        href="https://wa.me/254706920328"
+        target="_blank"
+        class="button">
+
+            CHAT WITH COACH MARTIN
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+
+        © 2026
+
+        <span>Coach Martin Fitness</span>
+
+        | All Rights Reserved.
+
+    </p>
+
+    <p>
+
+        Train Smart • Stay Consistent • Become Stronger
+
+    </p>
+
+</footer>
+
+
+<!-- WHATSAPP -->
+
+<a
+class="whatsapp"
+href="https://wa.me/254706920328"
+target="_blank">
+
+    💬
+
+</a>
+
+
+<script>
+
+
+function registerClient() {
+
+
+    let name =
+    document.getElementById("clientName").value;
+
+
+    let phone =
+    document.getElementById("clientPhone").value;
+
+
+    let email =
+    document.getElementById("clientEmail").value;
+
+
+    let service =
+    document.getElementById("service").value;
+
+
+    let plan =
+    document.getElementById("plan").value;
+
+
+    let goal =
+    document.getElementById("goal").value;
+
+
+    let message =
+
+    "NEW COACH MARTIN FITNESS REGISTRATION"
+    + "%0A%0A"
+
+    + "Name: "
+    + encodeURIComponent(name)
+
+    + "%0APhone: "
+    + encodeURIComponent(phone)
+
+    + "%0AEmail: "
+    + encodeURIComponent(email)
+
+    + "%0AService: "
+    + encodeURIComponent(service)
+
+    + "%0APackage: "
+    + encodeURIComponent(plan)
+
+    + "%0AGoal: "
+    + encodeURIComponent(goal);
+
+
+    let whatsappURL =
+
+    "https://wa.me/254706920328?text="
+    + message;
+
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
+
+
