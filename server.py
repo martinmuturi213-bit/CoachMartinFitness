@@ -1,19 +1,20 @@
-import os
+ import os
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/")
 def home():
     return send_from_directory('.', 'index.html')
 
-
+@app.route("/<path:filename>")
+def serve_files(filename):
+    return send_from_directory('.', filename)
 
 @app.route("/register", methods=["POST"])
 def register():
-
     name = request.form.get("name")
     phone = request.form.get("phone")
     email = request.form.get("email")
@@ -35,7 +36,6 @@ def register():
         "message": "Registration received successfully!"
     })
 
-
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 1000))
+    port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
